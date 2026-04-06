@@ -1,0 +1,12 @@
+defaults:
+  - dataset: coco_airplane
+  - _self_
+
+core:
+  project_name: "aircraft-detector-classificator"
+  seed: 42
+  work_dir: ${hydra:runtime.cwd}
+
+mlflow:
+  experiment_name: "yolo_airplane_detection"
+  tracking_uri: "sqlite:///mlflow.db"

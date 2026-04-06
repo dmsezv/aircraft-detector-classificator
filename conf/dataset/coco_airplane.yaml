@@ -1,0 +1,5 @@
+target_class_name: "airplane"
+splits:
+  - train
+  - validation
+processed_data_dir: ${core.work_dir}/datasets/coco_airplane
