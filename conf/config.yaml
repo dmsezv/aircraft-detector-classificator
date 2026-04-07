@@ -1,5 +1,7 @@
 defaults:
   - dataset: coco_airplane
+  - model: yolov8n_base
+  - training: default
   - _self_
 
 core:
