@@ -13,3 +13,30 @@ dependencies = [
     "python-dotenv>=1.2.2",
     "ultralytics>=8.4.33",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.9",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "mlruns",
+    "notebooks",
+]
+
+[tool.ruff.lint]
+# E, W: стандарты PEP8 (pycodestyle)
+# F:    базовые ошибки (pyflakes)
+# I:    сортировка импортов (isort)
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

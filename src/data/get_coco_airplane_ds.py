@@ -1,19 +1,21 @@
+import logging
+import warnings
+
 import fiftyone as fo
 import hydra
 from omegaconf import DictConfig
-import os
 
-import warnings
 warnings.filterwarnings("ignore", category=SyntaxWarning)
+
+logger = logging.getLogger(__name__)
 
 @hydra.main(version_base=None, config_path="../../conf", config_name="config")
 def main(cfg: DictConfig):
     target_class = cfg.dataset.target_class_name
     export_dir = cfg.dataset.processed_data_dir
 
-
     for split in cfg.dataset.splits:
-        print(f'[INFO] get data for {split}')
+        logger.info(f"Get data for {split}")
 
         dataset = fo.zoo.load_zoo_dataset(
             "coco-2017",
@@ -27,8 +29,9 @@ def main(cfg: DictConfig):
             export_dir=export_dir,
             dataset_type=fo.types.YOLOv5Dataset,
             split=split,
-            classes=[target_class]
+            classes=[target_class],
         )
+
 
 if __name__ == "__main__":
     main()
