@@ -1,7 +1,9 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
 class Settings(BaseSettings):
-    detector_path: str = "yolov8n.pt" 
+    detector_path: str = ""
+    triton_model_dir: str = ""
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 

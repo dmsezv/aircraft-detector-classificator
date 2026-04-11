@@ -1,7 +1,8 @@
-from fastapi import FastAPI, UploadFile, File
-from ultralytics import YOLO
-from PIL import Image
 import io
+
+from fastapi import FastAPI, File, UploadFile
+from PIL import Image
+from ultralytics import YOLO
 
 from src.utils.env_config import settings
 
@@ -23,13 +24,13 @@ async def predict_airplane(file: UploadFile = File(...)):
             # [x_min, y_min, x_max, y_max]
             x1, y1, x2, y2 = box.xyxy[0].tolist()
             conf = box.conf[0].item()
-            
+
             detections.append({
                 "confidence": conf,
                 "bbox": [
-                    round(x1), 
-                    round(y1), 
-                    round(x2), 
+                    round(x1),
+                    round(y1),
+                    round(x2),
                     round(y2)
                 ]
             })

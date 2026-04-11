@@ -226,3 +226,4 @@ mlflow.db
 # YOLO
 /runs/
 *.pt
+*.onnx
