@@ -208,6 +208,7 @@ __marimo__/
 
 # Temp
 /temp/
+.DS_Store
 
 # Datasets
 /data/

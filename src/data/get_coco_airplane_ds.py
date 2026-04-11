@@ -22,7 +22,7 @@ def main(cfg: DictConfig):
             split=split,
             label_types=["detections"],
             classes=[target_class],
-            max_samples=50,
+            # max_samples=50,
         )
 
         dataset.export(

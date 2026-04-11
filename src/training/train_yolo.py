@@ -44,6 +44,7 @@ def main(cfg: DictConfig) -> None:
             imgsz=cfg.training.imgsz,
             batch=cfg.training.batch_size,
             device=cfg.training.device,
+            patience=cfg.training.patience,
             project=runs_dir,
             name=cfg.model.name,
             exist_ok=True,
