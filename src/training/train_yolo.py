@@ -10,6 +10,7 @@ from src.utils.utils import flatten_dict
 
 logger = logging.getLogger(__name__)
 
+
 @hydra.main(version_base=None, config_path="../../conf", config_name="config")
 def main(cfg: DictConfig) -> None:
     logger.info(f"Strat train with params:\n{OmegaConf.to_yaml(cfg)}")

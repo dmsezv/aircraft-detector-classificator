@@ -9,6 +9,7 @@ warnings.filterwarnings("ignore", category=SyntaxWarning)
 
 logger = logging.getLogger(__name__)
 
+
 @hydra.main(version_base=None, config_path="../../conf", config_name="config")
 def main(cfg: DictConfig):
     target_class = cfg.dataset.target_class_name

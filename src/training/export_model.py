@@ -20,5 +20,6 @@ def export_detector_to_triton():
 
     logger.info(f"ONNX saved path: {destination}")
 
+
 if __name__ == "__main__":
     export_detector_to_triton()
