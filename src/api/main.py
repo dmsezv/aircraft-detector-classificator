@@ -3,11 +3,11 @@ from ultralytics import YOLO
 from PIL import Image
 import io
 
+from src.utils.env_config import settings
 
 app = FastAPI(title="Aircraft Detector API")
 
-MODEL_PATH = "runs/yolov8n_baseline/weights/best.pt" 
-model = YOLO(MODEL_PATH)
+model = YOLO(settings.detector_path)
 
 @app.post("/predict_airplane")
 async def predict_airplane(file: UploadFile = File(...)):
