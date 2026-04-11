@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 def export_detector_to_triton():
     model = YOLO(settings.detector_path)
-    exported_path = model.export(format="onnx", imgsz=640)
+    exported_path = model.export(format="onnx", imgsz=640, opset=18)
 
     os.makedirs(settings.triton_model_dir, exist_ok=True)
 

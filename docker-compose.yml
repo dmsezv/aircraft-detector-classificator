@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  triton:
+    image: nvcr.io/nvidia/tritonserver:23.12-py3
+    container_name: triton_server
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+      - "8002:8002"
+    volumes:
+      - ./model_repository:/models
+    command: ["tritonserver", "--model-repository=/models"]
+    deploy:
+      resources:
+        limits:
+          memory: 4G
