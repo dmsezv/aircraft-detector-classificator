@@ -5,7 +5,7 @@ from src.utils.env_config import settings
 
 
 class TritonClient:
-    def __init__(self, url=settings.tritin_url):
+    def __init__(self, url=settings.triton_url):
         self.client = httpclient.InferenceServerClient(url=url)
 
     def infer_detector(self, input_tensor: np.ndarray) -> np.ndarray:
