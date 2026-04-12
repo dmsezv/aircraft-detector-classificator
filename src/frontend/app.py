@@ -9,10 +9,6 @@ from PIL import Image
 
 from src.utils.env_config import settings
 
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
-
 
 st.set_page_config(page_title="Aircraft Detector", layout="wide")
 
@@ -49,7 +45,7 @@ if uploaded_file is not None:
                         text_color = (0, 0, 0)
                 
                         font = cv2.FONT_HERSHEY_SIMPLEX
-                        font_scale = 0.4
+                        font_scale = 0.5
                         font_width = 1
                         bbox_width = 3
 
