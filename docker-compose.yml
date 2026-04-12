@@ -6,8 +6,6 @@ services:
     container_name: triton_server
     ports:
       - "8000:8000"
-      - "8001:8001"
-      - "8002:8002"
     volumes:
       - ./model_repository:/models
     command: ["tritonserver", "--model-repository=/models"]
@@ -15,3 +13,34 @@ services:
       resources:
         limits:
           memory: 4G
+    restart: always
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: aircraft_backend
+    ports:
+      - "8080:8080"
+    environment:
+      - API_URL=http://backend:8080/predict_airplane
+      - TRITON_URL=triton:8000
+      - CLASSIFIER_CONFIG_PATH=/app/model_repository/convnext_classifier/1/config.json
+    volumes:
+      - ./model_repository:/app/model_repository
+    depends_on:
+      - triton
+    restart: always
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: aircraft_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://backend:8080/predict_airplane
+    depends_on:
+      - backend
+    restart: always
