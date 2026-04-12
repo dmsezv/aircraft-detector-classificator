@@ -1,9 +1,11 @@
 import numpy as np
 import tritonclient.http as httpclient
 
+from src.utils.env_config import settings
+
 
 class TritonClient:
-    def __init__(self, url="localhost:8000"):
+    def __init__(self, url=settings.tritin_url):
         self.client = httpclient.InferenceServerClient(url=url)
 
     def infer_detector(self, input_tensor: np.ndarray) -> np.ndarray:
