@@ -1,2 +1,3 @@
 name: "yolov8n_baseline"
 weights: "yolov8n.pt"
+yaml_config: null

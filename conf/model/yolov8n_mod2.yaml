@@ -1,0 +1,3 @@
+name: "yolov8_mod2"
+weights: "yolov8n.pt"
+yaml_config: "src/models/custom_model_yolov8n_2.yaml"

@@ -1,6 +1,6 @@
 defaults:
   - dataset: coco_airplane
-  - model: yolov8n_base
+  - model: yolov8n_mod2
   - training: default
   - _self_
 

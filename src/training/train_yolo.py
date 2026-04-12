@@ -26,8 +26,18 @@ def main(cfg: DictConfig) -> None:
     os.environ["MLFLOW_EXPERIMENT_NAME"] = cfg.mlflow.experiment_name
     os.environ["MLFLOW_TRACKING_URI"] = cfg.mlflow.tracking_uri
 
-    logger.info(f"Model: {cfg.model.weights}")
-    model = YOLO(cfg.model.weights)
+    yaml_config = cfg.model.get("yaml_config", None)
+
+    if yaml_config:
+        logger.info(f"Model from: {yaml_config}")
+        model = YOLO(yaml_config)
+        
+        if cfg.model.get("weights"):
+            logger.info(f"Weights from: {cfg.model.weights}")
+            model = model.load(cfg.model.weights)
+    else:
+        logger.info(f"Model: {cfg.model.weights}")
+        model = YOLO(cfg.model.weights)
 
     dataset_yaml_path = os.path.join(
         cfg.core.work_dir, cfg.dataset.processed_data_dir, "dataset.yaml"
