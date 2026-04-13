@@ -7,6 +7,7 @@
 
 **Протестировать сервис вживую:** [http://195.209.218.220:8501](http://195.209.218.220:8501)
 
+Видео превью:
 <picture>
     <img alt="" src="https://github.com/dmsezv/aircraft-detector-classificator/blob/main/pics/example.gif">
 </picture>
